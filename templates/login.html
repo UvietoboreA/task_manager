@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% import "Bootstrap/wtf.html" as wtf %}
+
+{% block title%} Login Page {% endblock %}
+
+{% block nav %} 
+
+{% if current_user.is_authenticated %}
+  <h2 style="position: absolute;">{{ current_user.name }}'s TASK MANAGER</h2>
+
+  <a href="{{url_for('logout')}}" class="head_area">
+    <button type="button" class="btn btn-danger">Logout</button>
+  </a>
+
+{% else %}
+  <h2>MY TASK MANAGER</h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<form method="post" style="padding-top: 130px; padding-bottom: 109px; padding-left: 500px; padding-right: 420px;">
+    <h1>TASK MANAGER LOGIN PAGE</h1>
+    {{ wtf.quick_form(form2) }}
+</form>
+
+{% endblock %}

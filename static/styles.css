@@ -1,0 +1,42 @@
+::-webkit-scrollbar{
+    width: 1rem;
+    height: 1rem;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #8C6D51 ;
+}
+
+::-webkit-scrollbar-track{
+    background: #59452C ;
+}
+
+body{
+
+    background-color: #59452C;
+
+    font-family:'Times New Roman', Times, serif;
+
+}
+
+nav{
+
+    background-color: #8C6D51;
+
+}
+
+.below{
+
+    background-color: #8C6D51;
+
+    text-align: center;
+
+}
+
+.container-md{
+
+    margin-top: 30px;
+
+    margin-bottom: 40px;
+
+}

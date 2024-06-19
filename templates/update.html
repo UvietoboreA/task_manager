@@ -1,0 +1,30 @@
+{% import "Bootstrap/wtf.html" as wtf %}
+
+{% extends "base.html" %}
+
+{% block title %} Update Task {%endblock%} 
+
+{% block nav %} 
+
+{% if current_user.is_authenticated %}
+  <h2 style="position: absolute;">{{ current_user.name }}'s TASK MANAGER</h2>
+
+  <a href="{{url_for('logout')}}" class="head_area">
+    <button type="button" class="btn btn-danger">Logout</button>
+  </a>
+
+{% else %}
+  <h2>MY TASK MANAGER</h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content%}
+
+<div class="container-lg">
+    <form action="{{ url_for('updatetask', task_id=task.id, name=current_user.name) }}" method="post">
+        {{ wtf.quick_form(form3) }}
+    </form>
+</div>
+
+{% endblock %}

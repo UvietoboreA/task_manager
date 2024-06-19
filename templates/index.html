@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block nav %} 
+
+{% if current_user.is_authenticated %}
+  <h2>{{ current_user.name }}'s TASK MANAGER</h2>
+
+  <a href="{{url_for('logout')}}" style="margin-left: 5px;">
+    <button type="button" class="btn btn-danger">Logout</button>
+  </a>
+
+{% else %}
+  <h2>MY TASK MANAGER</h2>
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container-md">
+      {% if tasks == [] %}
+        NO TASK <br>
+      {% else %}
+        <table class="table table-striped table-hover table-secondary">
+
+          <thead>
+            <tr>
+              <th scope="col"><h5>Task Title</h5></th>
+              <th scope="col"><h5>How to achieve task</h5></th>
+              <th scope="col"><h5>Update</h5></th>
+              <th scope="col"><h5>Delete</h5></th>
+            </tr>
+          </thead>
+
+        {% for task in tasks %}
+          <tbody>
+
+            <tr>
+              <td><p>{{task.task_title}}</p></td>
+
+              <td><p>{{task.list_to_do}}</p></td>
+
+              <td>
+                <a href="{{url_for('updatetask', task_id=task.id, name=current_user.name)}}" class="link-warning">
+                  <button>🖆</button>
+                </a>
+              </td>
+
+              <td>
+                <a href="{{url_for('deletetask', task_id=task.id, name=current_user.name)}}" class="link-danger">
+                  <button>🗑️</button>
+                </a>
+              </td>
+
+            </tr>
+
+          </tbody>
+        {% endfor%}
+
+      </table>
+
+      {% endif %}
+
+      <a href="{{url_for('addtask')}}" class="link-secondary">
+        <button>➕</button>
+      </a>
+      
+    </div>
+    
+{% endblock %}
+  

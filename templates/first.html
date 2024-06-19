@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% import "Bootstrap/wtf.html" as wtf %}
+
+{% block title%} SignUp Page {% endblock %}
+
+{% block nav %} 
+
+{% if current_user.is_authenticated %}
+  <h2 style="position: absolute;">{{ current_user.name }}'s TASK MANAGER</h2>
+
+  <a href="{{url_for('logout')}}" class="head_area">
+    <button type="button" class="btn btn-danger">Logout</button>
+  </a>
+
+{% else %}
+  <h2>MY TASK MANAGER</h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="intro">
+    <div style="padding-bottom: 40px; padding-top: 90px; text-align: center;">
+        <h1 style="font-size: 5.5vw;">Welcome to your Task Manager!</h1>
+    </div>
+
+    <div style="padding-top: 90px; text-align: center; padding-bottom: 90px;">
+
+        <h3>New Here? 
+          <a href="{{url_for('signup')}}">
+            <button style="background-color: #8C6D51;">
+              Sign Up
+            </button>
+          </a>
+        </h3>
+        <h3>Already Have an Account? 
+          <a href="{{url_for('login')}}">
+            <button style="background-color: #8C6D51;">
+              Login
+            </button>
+          </a>
+        </h3>
+    </div>
+</div>
+
+{% endblock %}
